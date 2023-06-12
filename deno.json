@@ -2,7 +2,7 @@
   "lock": true,
   "importMap": "./import_map.json",
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start:dev": "deno run -A --watch=static/,routes/ dev.ts",
     "start:prod": "deno run -A main.ts"
   },
   "compilerOptions": {

@@ -2,16 +2,24 @@ import {Head} from "$fresh/runtime.ts";
 import {PageProps} from '$fresh/server.ts';
 import {IProduct} from "../utils/types.ts";
 import Navigation from "../components/Navigation.tsx";
+import {Main} from "../components/Main.tsx";
 import ProductCard from "../islands/ProductCard.tsx";
 
 export const handler: Handlers<IProduct[] | null> = {
   async GET(_, ctx: unknown) {
-    const res = await fetch('https://fakestoreapi.com/products')
-    const products = (await res.json()) as IProduct[]
-    if (!products) {
+    try {
+      const res = await fetch('https://fakestoreapi.com/products')
+      const products = (await res.json()) as IProduct[]
+
+      if (!products) {
+        return ctx.render(null)
+      }
+
+      return ctx.render(products)
+
+    } catch (e) {
       return ctx.render(null)
     }
-    return ctx.render(products)
   },
 }
 

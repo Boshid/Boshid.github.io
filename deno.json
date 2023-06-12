@@ -1,0 +1,48 @@
+{
+  "lock": true,
+  "importMap": "./import_map.json",
+  "tasks": {
+    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start:prod": "deno run -A main.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "preact"
+  },
+  "lint": {
+    "report": "pretty",
+    "include": [
+      "src/"
+    ],
+    "exclude": [
+      "testdata/",
+      "fixtures/**/*.ts"
+    ],
+    "rules": {
+      "tags": [
+        "recommended"
+      ],
+      "include": [
+        "ban-untagged-todo"
+      ],
+      "exclude": [
+        "no-unused-vars"
+      ]
+    }
+  },
+  "fmt": {
+    "useTabs": false,
+    "lineWidth": 80,
+    "indentWidth": 2,
+    "semiColons": false,
+    "singleQuote": true,
+    "proseWrap": "preserve",
+    "include": [
+      "/"
+    ],
+    "exclude": [
+      "testdata/",
+      "data/fixtures/**/*.ts"
+    ]
+  }
+}
